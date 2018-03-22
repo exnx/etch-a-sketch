@@ -13,7 +13,7 @@ var firstMessage=true;    // What the first message, to start on the first value
 
     socket.on('reset', function() { // on a 'reset' message clean and reste firstMessage
       firstMessage=true;
-        console.log("that worked");
+        console.log("that worked");  // for testing
       ctx.clear();
     });
 
