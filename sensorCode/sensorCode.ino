@@ -4,14 +4,18 @@
 #define BUTTONPIN 2
 
   // potentiometer code
-//int sensorPin0 = A0;    // select the input pin for the potentiometer
 int sensorValue0 = 0;  // variable to store the value coming from the sensor
-//int sensorPin1 = A1;    // select the input pin for the potentiometer
+int outputValue0 = 0;
+
 int sensorValue1 = 0;  // variable to store the value coming from the sensor
+int outputValue1 = 0;
 
 //const int buttonPin = 2;     // the number of the pushbutton pin
 int buttonState = 0;         // variable for reading the pushbutton status
 
+String x_pos = "";
+String y_pos = "";
+String new_pos = "";
 
 unsigned long targetTime=0;
 const unsigned long interval=100; //TODO: How fast should we read
