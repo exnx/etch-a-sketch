@@ -32,23 +32,22 @@ void loop(){
 
   buttonState = digitalRead(BUTTONPIN);
 
-    // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
-    
-    Serial.println("not");
-  }
-
-  else {
-    Serial.println("rst\r\n");
-    delay(100);
-//    Serial.println("");
-//    Serial.println("sending the reset message");
-  }
-
-  
 	if(millis()>=targetTime){
 		targetTime= millis()+interval;
 		Serial.println(analogRead(SENSORPINA));
+
+
+       // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+      if (buttonState == HIGH) {
+        
+        Serial.println("not");
+      }
+    
+      else {
+        Serial.println("rst\r\n");
+//        delay(100);
+
+      }
 
 		 //TODO: Add other sensor read outs
      //TODO: convert values into a string https://www.arduino.cc/en/Tutorial/StringConstructors
