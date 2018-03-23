@@ -39,7 +39,7 @@ void loop(){
   }
 
   else {
-    Serial.write("rst");
+    Serial.println("rst\r\n");
 //    Serial.println("");
 //    Serial.println("sending the reset message");
   }
