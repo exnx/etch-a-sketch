@@ -40,7 +40,7 @@ void loop(){
 
 	if(millis()>=targetTime){
 		targetTime= millis()+interval;
-		Serial.println(analogRead(SENSORPINA));
+//		Serial.println(analogRead(SENSORPINA));
 
        // check if the pushbutton is pressed. If it is, the buttonState is LOW, the reset
       if (buttonState == LOW) {
@@ -48,10 +48,10 @@ void loop(){
       }
 
       sensorValue0 = analogRead(SENSORPIN0); // read value
-      outputValue0 = map(sensorValue, 0, 1023, 0, 500);  // map values
+      outputValue0 = map(sensorValue0, 0, 1023, 0, 500);  // map values
 
       sensorValue1 = analogRead(SENSORPIN1); // read value
-      outputValue1 = map(sensorValue, 0, 1023, 0, 500);  // map values
+      outputValue1 = map(sensorValue1, 0, 1023, 0, 500);  // map values
 
       x_pos = String(outputValue0);
       y_pos = String(outputValue1);
