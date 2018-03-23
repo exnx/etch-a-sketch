@@ -32,10 +32,10 @@ const parser = new readLine({
 // Read data that is available on the serial port and send it to the websocket
 serial.pipe(parser);
 parser.on('data', function(data) { // on data from the arduino
-    console.log("the data is: ", data);
-    
+
     if(data=='rst'){  // if its the 'rst' string call reset
       io.emit('reset');
+        console.log("the data is: ", data);
     
   }else{ // any other data we try to forward by spliting it
     var transmitData = [data.split(',')[0],data.split(',')[1]];
