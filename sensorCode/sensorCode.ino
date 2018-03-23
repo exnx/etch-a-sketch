@@ -40,6 +40,7 @@ void loop(){
 
   else {
     Serial.println("rst\r\n");
+    delay(100);
 //    Serial.println("");
 //    Serial.println("sending the reset message");
   }
