@@ -1,12 +1,12 @@
-#define SENSORPINA A0 // x axis
- //TODO: define other sensor inputs
-
+//TODO: define other sensor inputs
+#define SENSORPIN0 A0 // x axis
+#define SENSORPIN1 A1 // x axis
 #define BUTTONPIN 2
 
   // potentiometer code
-int sensorPin0 = A0;    // select the input pin for the potentiometer
+//int sensorPin0 = A0;    // select the input pin for the potentiometer
 int sensorValue0 = 0;  // variable to store the value coming from the sensor
-int sensorPin1 = A1;    // select the input pin for the potentiometer
+//int sensorPin1 = A1;    // select the input pin for the potentiometer
 int sensorValue1 = 0;  // variable to store the value coming from the sensor
 
 //const int buttonPin = 2;     // the number of the pushbutton pin
@@ -15,6 +15,8 @@ int buttonState = 0;         // variable for reading the pushbutton status
 
 unsigned long targetTime=0;
 const unsigned long interval=100; //TODO: How fast should we read
+
+
 void setup(){
 // TODO: begin the serial connection with a baudrate of 115200
   Serial.begin(115200);
@@ -23,8 +25,8 @@ void setup(){
   pinMode(BUTTONPIN, INPUT);
 
   // initialize potentiometer 
-  pinMode(sensorPin0, INPUT);
-  pinMode(sensorPin1, INPUT); 
+  pinMode(SENSORPIN0, INPUT);
+  pinMode(SENSORPIN1, INPUT); 
 }
 
 
@@ -36,19 +38,23 @@ void loop(){
 		targetTime= millis()+interval;
 		Serial.println(analogRead(SENSORPINA));
 
-
-       // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-      if (buttonState == HIGH) {
-        
-        Serial.println("not");
-      }
-    
-      else {
+       // check if the pushbutton is pressed. If it is, the buttonState is LOW, the reset
+      if (buttonState == LOW) {
         Serial.println("rst\r\n");
-//        delay(100);
-
       }
 
+      sensorValue0 = analogRead(SENSORPIN0); // read value
+      outputValue0 = map(sensorValue, 0, 1023, 0, 500);  // map values
+
+      sensorValue1 = analogRead(SENSORPIN1); // read value
+      outputValue1 = map(sensorValue, 0, 1023, 0, 500);  // map values
+
+      x_pos = String(outputValue0);
+      y_pos = String(outputValue1);
+      new_pos = x_pos + "," + y_pos;
+
+      Serial.println(new_pos);
+    
 		 //TODO: Add other sensor read outs
      //TODO: convert values into a string https://www.arduino.cc/en/Tutorial/StringConstructors
 		 //TODO: combine them into a string that can be understood by server.js
