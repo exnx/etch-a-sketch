@@ -28,7 +28,7 @@ var colorArray = ['#505050','A0522D','EE82EE','483D8B','00FFFF'];
         randomNum = Math.floor((Math.random() * 4));
         color = colorArray[randomNum];
         console.log("color change worked");  // for testing
-    }
+    });
 
     socket.on('new-pos', function(newPosition) { // handling new sensor values
 
