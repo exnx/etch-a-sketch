@@ -64,17 +64,17 @@ void loop(){
         Serial.println("colorChange\r\n");
       }
 
-//      sensorValue0 = analogRead(SENSORPIN0); // read value
-//      outputValue0 = map(sensorValue0, 0, 1023, 0, 500);  // map values
-//
-//      sensorValue1 = analogRead(SENSORPIN1); // read value
-//      outputValue1 = map(sensorValue1, 0, 1023, 0, 500);  // map values
-//
-//      x_pos = String(outputValue0);
-//      y_pos = String(outputValue1);
-//      new_pos = x_pos + "," + y_pos;
-//
-//      Serial.println(new_pos);
+      sensorValue0 = analogRead(SENSORPIN0); // read value
+      outputValue0 = map(sensorValue0, 0, 1023, 0, 500);  // map values
+
+      sensorValue1 = analogRead(SENSORPIN1); // read value
+      outputValue1 = map(sensorValue1, 0, 1023, 0, 500);  // map values
+
+      x_pos = String(outputValue0);
+      y_pos = String(outputValue1);
+      new_pos = x_pos + "," + y_pos;
+
+      Serial.println(new_pos);
     
 		 //TODO: Add other sensor read outs
      //TODO: convert values into a string https://www.arduino.cc/en/Tutorial/StringConstructors
