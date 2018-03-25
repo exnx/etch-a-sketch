@@ -2,6 +2,7 @@
 #define SENSORPIN0 A0 // x axis
 #define SENSORPIN1 A1 // x axis
 #define BUTTONPIN 2
+#define FSR A2  // force sensing resistor
 
   // potentiometer code
 int sensorValue0 = 0;  // variable to store the value coming from the sensor
@@ -9,6 +10,11 @@ int outputValue0 = 0;
 
 int sensorValue1 = 0;  // variable to store the value coming from the sensor
 int outputValue1 = 0;
+
+// FSR code
+int fsrValue3 = 0;
+int fsrSensorValue3 = 0;
+int fsrOutputValue3 = 0;
 
 //const int buttonPin = 2;     // the number of the pushbutton pin
 int buttonState = 0;         // variable for reading the pushbutton status
@@ -31,20 +37,28 @@ void setup(){
   // initialize potentiometer 
   pinMode(SENSORPIN0, INPUT);
   pinMode(SENSORPIN1, INPUT); 
+
+  // initialize FSR
+  pinMode(FSR, INPUT);
 }
 
 
 void loop(){
 
   buttonState = digitalRead(BUTTONPIN);
+  fsrSensorValue3 = analogRead(FSR);
+  fsrOutputValue3 = map(fsrSensorValue3,0,1023,0,10);
 
 	if(millis()>=targetTime){
 		targetTime= millis()+interval;
-//		Serial.println(analogRead(SENSORPINA));
 
        // check if the pushbutton is pressed. If it is, the buttonState is LOW, the reset
       if (buttonState == LOW) {
         Serial.println("rst\r\n");
+      }
+
+      if (fsrOutputValue3 >5) {
+        Serial.println("colorChange\r\n");
       }
 
       sensorValue0 = analogRead(SENSORPIN0); // read value

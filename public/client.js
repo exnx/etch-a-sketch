@@ -1,9 +1,13 @@
-var COLOUR =  '#505050';  // This is the drawing color
+var color =  '#505050';  // This is the drawing color
 var radius = 3;           // Constant radio for the line
 var socket = io();        // websocket to the server
 var previousPosition=[0,0]; // previous position to draw a line from
 var ctx = Sketch.create(); //Creating the drawing context
 var firstMessage=true;    // What the first message, to start on the first value
+var colorArray = ['#505050','A0522D','EE82EE','483D8B','00FFFF'];
+
+
+    
 
     ctx.container = document.getElementById( 'container' ); //reference drawing canvas
     ctx.autoclear= false; // making sure it stays
@@ -13,9 +17,18 @@ var firstMessage=true;    // What the first message, to start on the first value
 
     socket.on('reset', function() { // on a 'reset' message clean and reste firstMessage
       firstMessage=true;
-        console.log("that worked");  // for testing
+        console.log("reset worked");  // for testing
       ctx.clear();
     });
+
+
+    // adding code to receive a color change signal from the backend (and from the FSR on arduino)
+    socket.on('colorChange', function() { 
+        
+        randomNum = Math.floor((Math.random() * 4));
+        color = colorArray[randomNum];
+        console.log("color change worked");  // for testing
+    }
 
     socket.on('new-pos', function(newPosition) { // handling new sensor values
 
@@ -28,7 +41,7 @@ var firstMessage=true;    // What the first message, to start on the first value
       }else{ // any other message we use to draw.
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.fillStyle = ctx.strokeStyle = COLOUR;
+        ctx.fillStyle = ctx.strokeStyle = color;
         ctx.lineWidth = radius;
         ctx.beginPath();  //begin a adrawing
         ctx.moveTo( previousPosition[0], previousPosition[1] ); // from
