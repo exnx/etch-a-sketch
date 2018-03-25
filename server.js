@@ -33,7 +33,7 @@ const parser = new readLine({
 serial.pipe(parser);
 parser.on('data', function(data) { // on data from the arduino
 
-    console.log("the data before else statement: ", data);  // for testing
+//    console.log("the data before else statement: ", data);  // for testing 
     
     if(data=='rst'){  // if its the 'rst' string call reset
       io.emit('reset');
@@ -42,7 +42,7 @@ parser.on('data', function(data) { // on data from the arduino
     
     else if(data == 'colorChange') {
         io.emit('colorChange');
-        console.log("the data is: ", data);
+        console.log("color change message sent to server", data);
     }
       
     else{ // any other data we try to forward by spliting it

@@ -57,7 +57,7 @@ void loop(){
         Serial.println("rst\r\n");
       }
 
-      if (fsrOutputValue3 >5) {
+      if (fsrOutputValue3 > 4) {
         Serial.println("colorChange\r\n");
       }
 
