@@ -41,8 +41,9 @@ parser.on('data', function(data) { // on data from the arduino
   }
     
     else if(data == 'colorChange') {
-        io.emit('colorChange');
-        console.log("color change message sent to server", data);
+    
+        io.emit('colorChange',randomNum);
+        console.log("color change message sent to server");
     }
       
     else{ // any other data we try to forward by spliting it
