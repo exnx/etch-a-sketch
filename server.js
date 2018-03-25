@@ -37,7 +37,7 @@ parser.on('data', function(data) { // on data from the arduino
     
     if(data=='rst'){  // if its the 'rst' string call reset
       io.emit('reset');
-        console.log("the data is: ", data);
+//        console.log("the data is: ", data);
   }
     
     else if(data == 'colorChange') {
