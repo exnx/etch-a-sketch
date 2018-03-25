@@ -4,7 +4,7 @@ var socket = io();        // websocket to the server
 var previousPosition=[0,0]; // previous position to draw a line from
 var ctx = Sketch.create(); //Creating the drawing context
 var firstMessage=true;    // What the first message, to start on the first value
-var colorArray = ['#505050','A0522D','EE82EE','483D8B','00FFFF'];
+var colorArray = ['#505050','#A0522D','#EE82EE','#483D8B','#00FFFF'];
 
     ctx.container = document.getElementById( 'container' ); //reference drawing canvas
     ctx.autoclear= false; // making sure it stays
